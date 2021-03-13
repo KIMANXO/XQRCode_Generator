@@ -1,0 +1,40 @@
+
+
+
+import qrcode 
+
+
+
+# Prefrences  requesting ... 
+#/////////////////////////////////////////////////////////////////////////////////////////
+LINK= str(input("Enter Your Yink : "))
+Box_Size  = int(input("enter the box size (defautl = 20 ) : "))
+Border = int(input("enter the border size (default = 2) : "))
+Fill_Color = str(input("enter the fill color : "))
+Back_Color = str(input("enter the background color : "))
+OUTPUT = str(input("Save As (example => qrcode.png #! make sure to save it as 'png') : "))
+#//////////////////////////////////////////////////////////////////////////////////////////
+
+
+# filling preferences .....
+#//////////////////////////////////////////////////////////////////////////////////////////
+qr = qrcode.QRCode(
+    version=1,
+    error_correction = qrcode.constants.ERROR_CORRECT_L,
+    box_size= Box_Size,
+    border=Border
+    )
+
+qr.add_data(LINK)
+qr.make()
+img = qr.make_image(
+    fill_color = Fill_Color,
+    back_color = Back_Color
+    )
+#/////////////////////////////////////////////////////////////////////////////////////////
+
+
+# Saving The QRCode
+#/////////////////////////////////////////////////////////////////////////////////////////
+img.save(OUTPUT)
+#/////////////////////////////////////////////////////////////////////////////////////////
